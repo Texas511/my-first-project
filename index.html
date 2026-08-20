@@ -39,7 +39,26 @@
     * { box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
+<audio id="bgm" loop preload="metadata">
+  <source src="./bgm.mp3" type="audio/mpeg">
+</audio>
 
+<button id="musicButton" type="button">▶ 播放音乐</button>
+
+<script>
+  const bgm = document.getElementById("bgm");
+  const button = document.getElementById("musicButton");
+
+  button.addEventListener("click", async () => {
+    if (bgm.paused) {
+      await bgm.play();
+      button.textContent = "⏸ 暂停音乐";
+    } else {
+      bgm.pause();
+      button.textContent = "▶ 播放音乐";
+    }
+  });
+</script>
     body {
       margin: 0;
       min-width: 320px;
